@@ -1,8 +1,10 @@
+const getBody = async (url) => {
+    const res = await fetch(url);
+    const body = await res.json()
+    return body;
+}
 
-fetch('https://swapi.dev/api/people/1/')
-    .then((res) => {
-       return res.json();
-    })
-    .then((body) => {
+getBody('https://swapi.dev/api/people/11/')
+    .then((body)=>{
         console.log(body)
     })
