@@ -1,16 +1,50 @@
-const getBody = async (url) => {
-    const res = await fetch(url);
-    if(!res.ok) {
-        throw new Error(`Error could not get data from ${url}, we get status: ${res.status} `)
+class SwapiGet {
+    _miniUrl = 'https://swapi.dev/api';
+    async GetAll(url){
+        const res = await fetch(`${this._miniUrl}${url}`);
+        if(!res.ok){
+            throw new Error('Hello')
+        }
+        return await res.json();
     }
-    const body = await res.json()
-    return body;
+
+    async GetAllPeople(){
+        const res = await this.GetAll('/people/')
+        return res.results
+    }
+    GetPeople(id){
+        return this.GetAll(`/people/${id}`)
+    }
+    async GetAllPlanet(){
+        const res = await this.GetAll('/planets/')
+        return res.results
+    }
+    GetPlanet(id){
+        return this.GetAll(`/planets/${id}`)
+    }
+    async GetAllStarships(){
+        const res = await this.GetAll('/starships/')
+        return res.results
+    }
+    GetStarships(id){
+        return this.GetAll(`/starships/${id}`)
+    }
 }
 
-getBody('https://swapi.dev/api/people/21111/')
-    .then((body)=>{
-        console.log(body)
+const swapi = new SwapiGet();
+swapi.GetAllPeople()
+    .then((people)=>{
+    people.forEach((p) => console.log(p.name) )
+})
+
+swapi.GetPeople(5)
+    .then((user) => {
+        console.log('------------')
+        console.log(user.height)
+        console.log('------------')
     })
-    .catch((err) => {
-        console.error('Could not fetch: ', err)
+
+swapi.GetStarships(3)
+    .then((StarShip) => {
+        console.log(StarShip.name);
     })
