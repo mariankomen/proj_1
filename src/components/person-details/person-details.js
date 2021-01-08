@@ -31,7 +31,6 @@ export default class PersonDetails extends Component {
             })
     }
 
-
     render() {
         if(!this.state.person){
             return <span>Select a person from a list</span>
