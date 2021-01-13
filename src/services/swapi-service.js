@@ -1,7 +1,7 @@
 export default class SwapiService {
     _miniUrl = 'https://swapi.dev/api';
 
-    async GetAll(url) {
+    GetAll = async (url) => {
         const res = await fetch(`${this._miniUrl}${url}`);
         if (!res.ok) {
             throw new Error('Hello')
@@ -9,37 +9,37 @@ export default class SwapiService {
         return await res.json();
     }
 
-    async GetAllPeople() {
+    GetAllPeople = async () => {
         const res = await this.GetAll('/people/')
         return res.results.map(this._transformPerson)
     }
 
-    async GetPeople(id) {
+    GetPeople = async (id) => {
         const person = await this.GetAll(`/people/${id}`)
         return this._transformPerson(person)
     }
 
-    async GetAllPlanet() {
+    GetAllPlanet = async () => {
         const res = await this.GetAll('/planets/')
         return res.results.map(this._transformPlanet)
     }
 
-    async GetPlanet(id) {
+    GetPlanet = async (id) => {
         const planet = await this.GetAll(`/planets/${id}`)
         return this._transformPlanet(planet);
     }
 
-    async GetAllStarships() {
+    GetAllStarships = async () => {
         const res = await this.GetAll('/starships/')
         return res.results
     }
 
-    async GetStarships(id) {
+    GetStarships = async (id) => {
         const res = await this.GetAll(`/starships/${id}`)
         return res.results.map(this._transformStarship)
     }
 
-    _extractId(item){
+    _extractId = (item) => {
         const idRegExp = /\/([0-9]*)\/$/;
         return item.url.match(idRegExp)[1];
     }
@@ -53,6 +53,7 @@ export default class SwapiService {
             diameter: planet.diameter
         }
     }
+
     _transformStarship = (starship) => {
         return {
             id: this._extractId(starship),
@@ -76,6 +77,5 @@ export default class SwapiService {
             eyeColor: person.eyeColor
         }
     }
-
 
 }

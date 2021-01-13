@@ -1,0 +1,7 @@
+.content-block {
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 85px;
+    margin-top: 25px;
+}
