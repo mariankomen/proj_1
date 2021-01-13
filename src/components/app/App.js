@@ -54,10 +54,7 @@ export default class App extends Component {
                     </button>
                     <ErrorButton/>
                 </div>
-
                 <PeoplePage/>
-
-
                 <div className="content-block">
                     <div className="col-md-6">
                         <ItemList onItemSelected={this.onPersonSelected}
