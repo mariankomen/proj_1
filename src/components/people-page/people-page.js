@@ -24,18 +24,19 @@ export default class PeoplePage extends Component {
     }
 
     render() {
-        if(this.state.hasError){
+        if (this.state.hasError) {
             return <ErrorComponent/>
         }
-        return(
+        return (
             <div className="content-block">
                 <div className="col-md-6">
                     <ItemList onItemSelected={this.onPersonSelected}
-                    getData={this.swapiService.GetAllPeople}
+                              getData={this.swapiService.GetAllPeople}
+                              renderItem={({name, gender, birth_year}) => `${name}: (${gender}, ${birth_year})`}
                     />
                 </div>
                 <div className="col-md-6">
-                    <PersonDetails personId={this.state.selectedPerson} />
+                    <PersonDetails personId={this.state.selectedPerson}/>
                 </div>
             </div>
         );
