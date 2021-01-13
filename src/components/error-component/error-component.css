@@ -1,0 +1,7 @@
+.error-indicator {
+    width: 120px;
+    height: 70px;
+    font-size: 17px;
+    background-color: red;
+    color: white;
+}
