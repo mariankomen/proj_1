@@ -17,7 +17,6 @@ const Row = ({left, rigth}) => {
             </div>
         </div>
         )
-
 }
 
 export default class PeoplePage extends Component {
