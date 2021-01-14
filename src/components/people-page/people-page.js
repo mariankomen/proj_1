@@ -7,7 +7,7 @@ import ErrorComponent from "../error-component/error-component";
 import SwapiService from "../../services/swapi-service";
 
 const Row = ({left, rigth}) => {
-    return(
+    return (
         <div className="content-block">
             <div className="col-md-6">
                 {left}
@@ -16,7 +16,7 @@ const Row = ({left, rigth}) => {
                 {rigth}
             </div>
         </div>
-        )
+    )
 }
 
 export default class PeoplePage extends Component {
@@ -40,7 +40,6 @@ export default class PeoplePage extends Component {
         if (this.state.hasError) {
             return <ErrorComponent/>
         }
-
         const itemList = (
             <ItemList onItemSelected={this.onPersonSelected}
                       getData={this.swapiService.GetAllPeople}
