@@ -10,6 +10,8 @@ import ErrorButton from "../error-button/error-button";
 import ErrorComponent from "../error-component/error-component";
 import PeoplePage from "../people-page/people-page";
 import SwapiService from "../../services/swapi-service";
+import Row from '../row/row'
+
 
 export default class App extends Component {
     swapiService = new SwapiService();
@@ -42,19 +44,46 @@ export default class App extends Component {
             <RandomPlanet/> :
             null;
 
+        const { GetPeople, GetStarships,
+                getPersonImage, getStarshipImage
+
+        } = this.swapiService
+        const personDetails = (
+            <PersonDetails itemId={10}
+                           getData={GetPeople}
+                           getImageUrl={getPersonImage}
+            />
+        )
+        const StarShipDetails = (
+            <PersonDetails itemId={12}
+                           getData={GetStarships}
+                           getImageUrl={getStarshipImage}
+            />
+        )
+
         return (
             <div className="stardb-app">
                 <Header />
-                { planet }
-                <div className='errors-block'>
-                    <button
-                        className="toggle-planet btn btn-warning btn-lg"
-                        onClick={this.toggleRandomPlanet}>
-                        Toggle Random Planet
-                    </button>
-                    <ErrorButton/>
-                </div>
-                <PeoplePage/>
+                {/*{ planet }*/}
+                {/*<div className='errors-block'>*/}
+                {/*    <button*/}
+                {/*        className="toggle-planet btn btn-warning btn-lg"*/}
+                {/*        onClick={this.toggleRandomPlanet}>*/}
+                {/*        Toggle Random Planet*/}
+                {/*    </button>*/}
+                {/*    <ErrorButton/>*/}
+                {/*</div>*/}
+                {/*<PeoplePage/>*/}
+
+                <Row
+                    left={personDetails}
+                    rigth={StarShipDetails}
+                />
+
+
+
+
+
                 {/*<div className="content-block">*/}
                 {/*    <div className="col-md-6">*/}
                 {/*        <ItemList onItemSelected={this.onPersonSelected}*/}

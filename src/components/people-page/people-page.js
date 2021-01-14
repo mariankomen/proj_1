@@ -5,6 +5,8 @@ import ItemList from "../item-list/item-list";
 import PersonDetails from "../person-details/person-details";
 import ErrorComponent from "../error-component/error-component";
 import SwapiService from "../../services/swapi-service";
+import Row from '../row/row'
+
 
 class ErrorBoundry extends Component{
     state ={
@@ -23,18 +25,7 @@ class ErrorBoundry extends Component{
 
 
 
-const Row = ({left, rigth}) => {
-    return (
-        <div className="content-block">
-            <div className="col-md-6">
-                {left}
-            </div>
-            <div className="col-md-6">
-                {rigth}
-            </div>
-        </div>
-    )
-}
+
 
 export default class PeoplePage extends Component {
     swapiService = new SwapiService();
