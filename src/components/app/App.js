@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Header from '../header/header';
 import RandomPlanet from '../random-planet/random-planet';
 import ItemList from '../item-list/item-list';
-import PersonDetails from '../person-details/person-details';
+import PersonDetails, {Record} from '../person-details/person-details';
 
 import './App.css';
 import ErrorButton from "../error-button/error-button";
@@ -51,14 +51,17 @@ export default class App extends Component {
         const personDetails = (
             <PersonDetails itemId={10}
                            getData={GetPeople}
-                           getImageUrl={getPersonImage}
-            />
+                           getImageUrl={getPersonImage}>
+                <Record field='gender' label='Gender'/>
+                <Record field='eyeColor' label='Eye Color'/>
+            </PersonDetails>
         )
         const StarShipDetails = (
             <PersonDetails itemId={12}
                            getData={GetStarships}
                            getImageUrl={getStarshipImage}
-            />
+            >
+            </PersonDetails>
         )
 
         return (

@@ -4,6 +4,18 @@ import './person-details.css';
 import SwapiService from "../../services/swapi-service";
 import ErrorButton from "../error-button/error-button";
 
+const Record = ({item, field, label}) => {
+    return (
+        <li className="list-group-item">
+            <span className="term">{label}</span>
+            <span>{field}</span>
+        </li>
+    )
+}
+export {
+    Record
+}
+
 export default class PersonDetails extends Component {
     swapiService = new SwapiService();
     state = {
@@ -52,18 +64,12 @@ export default class PersonDetails extends Component {
                 <div className="card-body">
                     <h4>{item.name}</h4>
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item">
-                            <span className="term">Gender</span>
-                            <span>{item.gender}</span>
-                        </li>
-                        <li className="list-group-item">
-                            <span className="term">Birth Year</span>
-                            <span>{item.birth_year}</span>
-                        </li>
-                        <li className="list-group-item">
-                            <span className="term">Eye Color</span>
-                            <span>{item.eye_color}</span>
-                        </li>
+                        {
+                            React.Children.map(this.props.children, (child)=>{
+                                return child
+                            })
+                        }
+
                         <li className="list-group-item"><ErrorButton/></li>
                     </ul>
                 </div>
