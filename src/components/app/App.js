@@ -49,18 +49,21 @@ export default class App extends Component {
 
         } = this.swapiService
         const personDetails = (
-            <PersonDetails itemId={10}
+            <PersonDetails itemId={15}
                            getData={GetPeople}
                            getImageUrl={getPersonImage}>
                 <Record field='gender' label='Gender'/>
-                <Record field='eyeColor' label='Eye Color'/>
+                <Record field='eye_color' label='Eye Color'/>
             </PersonDetails>
         )
         const StarShipDetails = (
-            <PersonDetails itemId={12}
+            <PersonDetails itemId={15}
                            getData={GetStarships}
                            getImageUrl={getStarshipImage}
             >
+                <Record field='name' label='name: '/>
+                <Record field='model' label='model: '/>
+                <Record field='cost_in_credits' label='cost_in_credits'/>
             </PersonDetails>
         )
 
@@ -68,6 +71,7 @@ export default class App extends Component {
             <div className="stardb-app">
                 <Header />
                 {/*{ planet }*/}
+
                 {/*<div className='errors-block'>*/}
                 {/*    <button*/}
                 {/*        className="toggle-planet btn btn-warning btn-lg"*/}
@@ -76,28 +80,30 @@ export default class App extends Component {
                 {/*    </button>*/}
                 {/*    <ErrorButton/>*/}
                 {/*</div>*/}
+                {/*<Row*/}
+                {/*    left={personDetails}*/}
+                {/*    rigth={StarShipDetails}*/}
+                {/*/>*/}
                 {/*<PeoplePage/>*/}
-
-                <Row
-                    left={personDetails}
-                    rigth={StarShipDetails}
-                />
+                <ItemList/>
 
 
 
 
 
-                {/*<div className="content-block">*/}
-                {/*    <div className="col-md-6">*/}
-                {/*        <ItemList onItemSelected={this.onPersonSelected}*/}
-                {/*                  getData={this.swapiService.GetAllStarships}*/}
-                {/*                  renderItem={({model}) => (<span>{model}, Helo</span>)}*/}
-                {/*        />*/}
-                {/*    </div>*/}
-                {/*    <div className="col-md-6">*/}
-                {/*        <PersonDetails personId={this.state.selectedPerson} />*/}
-                {/*    </div>*/}
-                {/*</div>*/}
+
+
+                <div className="content-block">
+                    <div className="col-md-6">
+                        <ItemList onItemSelected={this.onPersonSelected}
+                                  getData={this.swapiService.GetAllStarships}
+                                  renderItem={({model}) => (<span>{model}, Helo</span>)}
+                        />
+                    </div>
+                    <div className="col-md-6">
+                        <PersonDetails personId={this.state.selectedPerson} />
+                    </div>
+                </div>
             </div>
         );
     }
